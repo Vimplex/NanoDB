@@ -105,9 +105,11 @@ class Graph:
                     if collection not in self.fast_query_data:
                         self.fast_query_data[collection] = {}
                     if properti not in self.fast_query_data[collection]:
-                        self.fast_query_data[collection][properti] = [value]
+                        self.fast_query_data[collection][properti] = {}
+                    if value not in self.fast_query_data[collection][properti]:
+                        self.fast_query_data[collection][properti][value] = [index]
                     elif value not in self.fast_query_data[collection][properti]:
-                        self.fast_query_data[collection][properti].append(value)
+                        self.fast_query_data[collection][properti][value].append(index)
                 else:
                     if collection not in self.fast_query_data:
                         self.fast_query_data[collection] = {}
@@ -119,4 +121,5 @@ class Graph:
 
        
     def show_fastquery_data(self):
-        print(self.fast_query_data)
+        print(str(self.fast_query_data))
+        
