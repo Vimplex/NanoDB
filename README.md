@@ -1,2 +1,2 @@
 # NanoDB
-A general purpose graph database, based on hdf5
+A general purpose graph database
