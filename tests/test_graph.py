@@ -1,10 +1,13 @@
 #encoding= UTF-8
 import os
+import sys
 from time import time
 import random
 from pyblake2 import blake2b
 import unittest
-from NanoDB import Graph 
+
+sys.path.append('./NanoDB')
+from NanoDB.graph import Graph
 
 class TestGraphDB(unittest.TestCase):
 
