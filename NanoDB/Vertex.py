@@ -31,28 +31,7 @@ class GenesisVertex:
 
         self.collections = {}
 
-    def add_collection(self, collection_vertex):
-        if collection_vertex.ID not in self.collections:
-            self.collections[collection_vertex.ID] = {}
-            return True
-        else:
-            print('colletion already initialized!')
-            return False
-    
-    def add_vertex(self, vertex):
-        if vertex.collection.ID in self.collections:
-            self.collections[vertex.collection.ID][vertex.ID] = vertex.properties
-        else:
-            print(self.collections)
-            print('The given collection does not exists, please initialize the collection first!')
-            return False
-    
-    def show(self):
-        for key, value in self.collections.items():
-            print(str(key)+'\n')
-            for v_id, v_pro in value.items():
-                print(str(v_id)+' :'+str(v_pro))
-            print('\n')
+  
 class CollectionVertex:
     def __init__(self, ID, collection_name):
         self.ID = ID
