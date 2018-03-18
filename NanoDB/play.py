@@ -1,12 +1,22 @@
+from time import time
+from Graph import Graph
 from Vertex import *
 
-graph = GenesisVertex('test', '123', 123)
+test = Graph('test', '123')
 
-graph.add_collection(CollectionVertex(1, 'testing'))
-graph.add_collection(CollectionVertex(2, 'users'))
+col1 = CollectionVertex(1, 'testing')
+col2 = CollectionVertex(2, 'users')
 
-graph.add_vertex(Vertex(1, CollectionVertex(1, 'testing'), {'user':'tester', 'timestamp':200}))
-graph.add_vertex(Vertex(2, CollectionVertex(1, 'testing'), {'user':'peter', 'timestamp':320}))
-graph.add_vertex(Vertex(3, CollectionVertex(2, 'users'), {'user':'user', 'timestamp':550}))
+test.add_collection(col1)
+test.add_collection(col2)
 
-graph.show()
+test.add_vertex(Vertex(1, col1, {'name':'vinc', 'timestamp':time()}))
+test.add_vertex(Vertex(2, col1, {'name':'ginc', 'timestamp':time()}))
+test.add_vertex(Vertex(3, col1, {'name':'tinc', 'timestamp':time()}))
+
+test.add_vertex(Vertex(4, col2, {'name':'peter', 'timestamp':time()}))
+test.add_vertex(Vertex(5, col2, {'name':'peter', 'timestamp':time()}))
+test.add_vertex(Vertex(6, col2, {'name':'peter', 'timestamp':time()}))
+
+
+test.show()
