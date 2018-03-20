@@ -34,15 +34,46 @@ class Collection:
         self.nodes = {}
 
     def insert_node(self, node):
-        
-        self.nodes[self.cur_ID] = {'props':node.properties, 'edges':node.edges}
+        for key, propertie in node.properties.items():
+            if key not in self.nodes:
+                self.nodes[key] = {propertie:[self.cur_ID]}
+            elif propertie not in self.nodes[key]:
+                self.nodes[key][propertie] = [self.cur_ID]
+            else:
+                self.nodes[key][propertie].append(self.cur_ID)
         self.cur_ID+=1
     
-    def find_node(self, ID):
-        try:
-            return self.nodes[ID]
-        except:
-            print('Node does not exist')
+    def find_node(self, properties):
+        nodes_to_return = set()
+        nodes_with_props = []
+       
+        if len(properties) > 1:
+            for key, propertie in properties.items():
+                
+                if key in self.nodes:
+                    if propertie in self.nodes[key]:
+                        if len(nodes_with_props) >0:
+                            checked_Ids = []
+                            for ID in self.nodes[key][propertie]:
+                                if ID in nodes_with_props:
+                                    checked_Ids.append(ID)
+                                else:
+                                    continue
+                            nodes_with_props = checked_Ids
+                        else:
+                            nodes_with_props = self.nodes[key][propertie]
+            
+            nodes_to_return = set(nodes_with_props)
+
+        elif len(properties) ==1:
+            for key, propertie in properties.items():
+                if key in self.nodes:
+                    if propertie in self.nodes[key]:
+                        nodes_to_return = self.nodes[key][propertie]
+
+        return nodes_to_return
+    
+        #print('Node does not exist')
     
     def __repr__(self):
         string = 'Collection: '+str(self.name)+'\n\n'
