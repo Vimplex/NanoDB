@@ -1,5 +1,5 @@
 from NanoDB.base_classes import Node, Collection
-
+import random
 node1 = Node({'user':'Vincent', 'age':23, 'water':True})
 node2 = Node({'user':'Vincent', 'age':23})
 

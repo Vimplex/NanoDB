@@ -73,14 +73,16 @@ class Collection:
 
         return nodes_to_return
     
-        #print('Node does not exist')
-    
+    def get_collection_size(self):
+        return self.cur_ID-1
+
     def __repr__(self):
+        return str(self.__class__)+'("'+self.name+'") '+str(self.cur_ID-1)+' entries'
+    
+    def __str__(self):
         string = 'Collection: '+str(self.name)+'\n\n'
         if len(self.nodes) > 0:
             for ID, node in self.nodes.items():
                 string += str(ID)+': '+str(node)+'\n'
         return string
     
-    def __str__(self):
-        return self.__repr__()
