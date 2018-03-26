@@ -29,17 +29,19 @@ class Graph:
                     else:
                         to_return + result
         else:
-            for key, collection in self.collections.items():
+            for name, collection in self.collections.items():
                 result = collection.find_node(properties)
                 if len(result) == 0:
                     continue
                 else:
-                    to_return + result
+                    to_return.append({name:result})
+        
+        return to_return
     
     def __repr__(self):
         string = ''
         if len(self.collections) > 0:
-            for key, collection in self.collections.items():
+            for _, collection in self.collections.items():
                 string += ('\n'+collection.name+'\n')
                 for propertie, ID in collection.nodes.items():
                     string += propertie+': '+str(ID)+'\n'
